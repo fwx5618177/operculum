@@ -2,19 +2,25 @@
   "name": "resume-cli",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/main.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fwx5618177/operculum"
+  },
+  "author": "fwx5618177",
+  "main": "dist/cli.js",
   "bin": {
-    "resume-cli": "dist/main.js"
+    "resume-cli": "dist/cli.js"
   },
   "scripts": {
     "preinstall": "npx -y only-allow pnpm",
-    "clean": "rm -rf ./node_modules **/*/node_modules **/*/logs",
+    "clean": "rimraf ./node_modules **/*/node_modules **/*/logs",
+    "clean:cache": "rimraf ./dist ./node_modules/.cache",
     "lint": "eslint --ignore-path .gitignore --ext .ts .",
     "lint:fix": "eslint --ignore-path .gitignore --ext .ts --fix .",
     "prettier": "prettier --ignore-path .gitignore --write \"**/*.ts\"",
-    "start": "ts-node -r tsconfig-paths/register --transpile-only main.ts",
+    "start": "ts-node -r tsconfig-paths/register --transpile-only cli.ts",
     "build": "tsc -p tsconfig.json",
-    "cli": "pnpm run build && node ./dist/main.js",
+    "cli": "pnpm run clean:cache && pnpm run build && node ./dist/cli.js",
     "semantic-release": "semantic-release"
   },
   "keywords": [],
@@ -22,10 +28,10 @@
     "node": ">= 20.6.1",
     "pnpm": ">=8.0.0"
   },
-  "author": "",
   "license": "ISC",
   "dependencies": {
     "commander": "^11.0.0",
+    "rimraf": "^5.0.5",
     "semantic-release": "^22.0.5",
     "ts-node": "^10.9.1",
     "typescript": "^5.1.3"

@@ -9,6 +9,6 @@
         "outDir": "dist",
         "resolveJsonModule": true
     },
-    "include": ["main.ts", "packages/**/*"],
+    "include": ["cli.ts", "packages/**/*", "src/**/*"],
     "exclude": ["node_modules/**/*"]
 }
