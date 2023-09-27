@@ -20,6 +20,9 @@ jobs:
               with:
                   node-version: 20.6.1
 
+            - name: Setup Pnpm
+              run: npm install -g pnpm@latest
+
             - name: Cache Dependencies
               uses: actions/cache@v2
               with:
@@ -36,8 +39,8 @@ jobs:
 
             - name: Release and Publish
               env:
-                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-                  #   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+                  GITHUB_TOKEN: ${{ secrets.TOKEN }}
+                  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
               run: pnpm run semantic-release
 
             - name: Send Email Notification
