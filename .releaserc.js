@@ -9,8 +9,8 @@ module.exports = {
                 changelogFile: 'CHANGELOG.md', // 把发布日志写入该文件
             },
         ],
-        // "@semantic-release/npm",
-        // "@semantic-release/github",
+        '@semantic-release/npm',
+        '@semantic-release/github',
         [
             '@semantic-release/git',
             {

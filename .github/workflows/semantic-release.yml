@@ -41,7 +41,7 @@ jobs:
               env:
                   GITHUB_TOKEN: ${{ secrets.TOKEN }}
                   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-              run: pnpm run semantic-release
+              run: pnpm run release
 
             - name: Send Email Notification
               if: success() # Only send email if the previous steps were successful
