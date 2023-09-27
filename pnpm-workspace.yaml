@@ -1,4 +1,4 @@
-name: 'seneca'
+name: 'operculum'
 packages:
     - 'packages/*'
     - '!**/test/**'

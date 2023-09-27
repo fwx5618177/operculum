@@ -13,6 +13,7 @@ jobs:
             - name: Checkout Code
               uses: actions/checkout@v2
               with:
+                  token: ${{ secrets.TOKEN }}
                   fetch-depth: 0 # Fetch all history so that semantic-release can generate changelogs correctly
 
             - name: Setup Node.js

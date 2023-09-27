@@ -1,15 +1,15 @@
 {
-  "name": "resume-cli",
+  "name": "operculum",
   "version": "1.0.0",
   "description": "",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/fwx5618177/operculum"
+    "url": "https://github.com/fwx5618177/operculum"
   },
   "author": "fwx5618177",
   "main": "dist/cli.js",
   "bin": {
-    "resume-cli": "dist/cli.js"
+    "operculum": "dist/cli.js"
   },
   "scripts": {
     "preinstall": "npx -y only-allow pnpm",
