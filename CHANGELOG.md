@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/fwx5618177/operculum/compare/v1.2.0...v1.2.1) (2023-09-27)
+
+
+### Bug Fixes
+
+* update the configuration ([fe07d1f](https://github.com/fwx5618177/operculum/commit/fe07d1fc3b7e48b7b683881dff8beaa008788920))
+
 # [1.2.0](https://github.com/fwx5618177/operculum/compare/v1.1.0...v1.2.0) (2023-09-27)
 
 
