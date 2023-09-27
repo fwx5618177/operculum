@@ -2,70 +2,52 @@
 
 import { Command } from 'commander'
 import { version } from './package.json'
-import fs from 'fs'
-import path from 'path'
+import Main from './src/main'
 
 const program = new Command()
+const main = new Main()
 
 program.addHelpText(
     'beforeAll',
     `
-    A CLI for parsing and handling resume templates.
+        It's a toy for self so that simply convert template files to resume.
     `,
 )
 
+program.usage('<command> [options]').description('An enhanced CLI for resume template parsing and processing.')
+program.version(version, '-v, --version', 'Output the current version of operculum.').name('operculum') // 这里添加你的CLI命令名
 program
-    .version(version, '-v, --version', 'Output the current version of resume-cli.')
-    .name('resume-cli') // 这里添加你的CLI命令名
-    .usage('<command> [options]')
+    .helpOption('-h, --help', 'Display help for commands and options.')
+    .addHelpCommand('help [command]', 'Display help for specific command')
+    .usage('<command> [options]') // Setting usage information
     .description('An enhanced CLI for resume template parsing and processing.')
 
-program.helpOption('-h, --help', 'Display help for commands and options.').addHelpCommand('help [command]', 'Display help for specific command')
-
-// Setting usage information
-program.usage('<command> [options]').description('An enhanced CLI for resume template parsing and processing.')
-
+// 1. Parse Command
 program
     .command('parse <templatePath>')
     .description('Parse a specific resume template.')
     .option('-o, --output <outputPath>', 'Specify the output path for the parsed resume.')
-    .action((templatePath, options) => {
-        const content = fs.readFileSync(path.resolve(templatePath), 'utf-8')
-        console.log('Parsing the resume template...')
-        // TODO: Add your template parsing logic here
-        const parsedContent = content // This should be replaced with actual parsed content
-
-        if (options.output) {
-            fs.writeFileSync(path.resolve(options.output), parsedContent, 'utf-8')
-            console.log(`Parsed resume has been saved to ${options.output}`)
-        } else {
-            console.log('Parsed Resume Content:', parsedContent)
-        }
-    })
-
-program
-    .command('hello <name>')
-    .description('say hello')
-    .action(name => {
-        console.log(`Hello, ${name}!`)
-    })
+    .action((templatePath, options) =>
+        main.execute('parse', {
+            templatePath,
+            options,
+        }),
+    )
 
 // Additional Help Information
 program.addHelpText(
     'after',
     `
 Example usage:
-  $ resume-cli parse ./my-resume-template.md -o ./parsed-resume.md
-  $ resume-cli hello John
+  $ operculum parse ./my-resume-template.md -o ./parsed-resume.md
 `,
 )
-
-program.parse(process.argv)
 
 // Parse program arguments or show help by default
 const args = process.argv
 if (args.length <= 2) {
-    program.help() // Show help if no arguments
-} else {
-    program.parse(args)
+    program.outputHelp() // Show help if no arguments
+    process.exit()
 }
+
+program.parse(args)
