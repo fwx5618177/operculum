@@ -1,3 +1,10 @@
+## [1.2.3](https://github.com/fwx5618177/operculum/compare/v1.2.2...v1.2.3) (2023-09-27)
+
+
+### Bug Fixes
+
+* add name ([e42d41d](https://github.com/fwx5618177/operculum/commit/e42d41daa80304e053eba7e6755679686b354a9d))
+
 ## [1.2.2](https://github.com/fwx5618177/operculum/compare/v1.2.1...v1.2.2) (2023-09-27)
 
 
