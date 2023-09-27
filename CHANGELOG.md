@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/fwx5618177/operculum/compare/v1.1.0...v1.2.0) (2023-09-27)
+
+
+### Features
+
+* add ([79fe554](https://github.com/fwx5618177/operculum/commit/79fe554bcedf5c6668f91168c5bda62213a5ac7c))
+
 # [1.1.0](https://github.com/fwx5618177/operculum/compare/v1.0.0...v1.1.0) (2023-09-27)
 
 
