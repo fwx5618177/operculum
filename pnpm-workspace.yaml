@@ -2,3 +2,4 @@ name: 'operculum'
 packages:
     - 'packages/*'
     - '!**/test/**'
+    - 'benchmark/*'
