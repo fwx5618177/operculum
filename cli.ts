@@ -24,8 +24,9 @@ program
 
 // 1. Parse Command
 program
-    .command('parse <templatePath>')
+    .command('parse')
     .description('Parse a specific resume template.')
+    .argument('<templatePath>', 'template path string')
     .option('-o, --output <outputPath>', 'Specify the output path for the parsed resume.')
     .action((templatePath, options) =>
         main.execute('parse', {
@@ -34,12 +35,19 @@ program
         }),
     )
 
+// 2. Inquirer Command
+program
+    .command('inquirer')
+    .description('Inquirer a specific resume template.')
+    .action(() => main.execute('inquire'))
+
 // Additional Help Information
 program.addHelpText(
     'after',
     `
 Example usage:
   $ operculum parse ./my-resume-template.md -o ./parsed-resume.md
+  $ operculum inquire
 `,
 )
 

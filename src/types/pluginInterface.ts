@@ -1,10 +1,10 @@
 // src/types/pluginInterface.ts
 import { ParsePlugin } from '../plugins/parsePlugin'
-import { InputPlugin } from '../plugins/inputPlugin'
+import { InquirePlugin } from '../plugins/inquirePlugin'
 
 interface PluginMap {
     parse: ParsePlugin
-    input: InputPlugin
+    inquire: InquirePlugin
 }
 
 export type CommandName = keyof PluginMap
