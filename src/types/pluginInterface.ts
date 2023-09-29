@@ -1,18 +1,11 @@
-// src/types/pluginInterface.ts
-import { ParsePlugin } from '../plugins/parsePlugin'
-import { InquirePlugin } from '../plugins/inquirePlugin'
-
-interface PluginMap {
-    parse: ParsePlugin
-    inquire: InquirePlugin
+export type Plugins = {
+    [key: string]: PluginInterface
 }
 
-export type CommandName = keyof PluginMap
-
-export type Plugins = {
-    [K in CommandName]: PluginInterface
+export interface Context {
+    [key: string]: any
 }
 
 export interface PluginInterface {
-    run(...options: any[]): void
+    execute(context: Context, ...options: any[]): Promise<void> | void
 }

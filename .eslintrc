@@ -13,6 +13,7 @@
         "@typescript-eslint/no-explicit-any": "off",
         "@typescript-eslint/ban-types": "off",
         "@typescript-eslint/no-var-requires": "off",
-        "@typescript-eslint/no-empty-function": 0
+        "@typescript-eslint/no-empty-function": 0,
+        "prefer-rest-params": "off"
     }
 }

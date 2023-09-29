@@ -1,10 +1,10 @@
 // src/plugins/parsePlugin.ts
 import fs from 'fs'
 import path from 'path'
-import { PluginInterface } from '../types/pluginInterface'
+import { Context, PluginInterface } from '../../types/pluginInterface'
 
 export class ParsePlugin implements PluginInterface {
-    run(options: { templatePath: string; output?: string }): void {
+    execute(context: Context, options: { templatePath: string; output?: string }): void {
         const { templatePath, output } = options
 
         const content = fs.readFileSync(path.resolve(templatePath), 'utf-8')
