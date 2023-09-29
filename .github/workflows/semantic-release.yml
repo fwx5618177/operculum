@@ -72,7 +72,7 @@ jobs:
               run: |
                   DISCORD_WEBHOOK_URL=${{ secrets.DISCORD_WEBHOOK_URL }}
                   MESSAGE="Operculum: NEW Release: v${{ env.RELEASE_VERSION }} is published! Check it out at ${{ github.event.repository.html_url }}/blob/master/CHANGELOG.md"
-                  curl -H "Content-Type: application/json" -X POST -d '{"content": "'"$MESSAGE"'"}' $WEBHOOK_URL
+                  curl -H "Content-Type: application/json" -X POST -d '{"content": "'"$MESSAGE"'"}' $DISCORD_WEBHOOK_URL
 
             # - name: Notify on Slack or Discord # Optionally notify team members on release, customize as per your needs
             #   if: success() # Only notify if the previous steps were successful
