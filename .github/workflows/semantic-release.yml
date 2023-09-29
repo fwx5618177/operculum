@@ -44,6 +44,10 @@ jobs:
                   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
               run: pnpm run release
 
+            - name: Get version from package.json
+              id: version
+              run: echo "::set-output name=version::$(node -p "require('./package.json').version")"
+
             - name: Send Email Notification
               if: success() # Only send email if the previous steps were successful
               uses: dawidd6/action-send-mail@v2
@@ -71,7 +75,7 @@ jobs:
               if: success()
               run: |
                   DISCORD_WEBHOOK_URL=${{ secrets.DISCORD_WEBHOOK_URL }}
-                  MESSAGE="Operculum: NEW Release: v${{ env.RELEASE_VERSION }} is published! Check it out at ${{ github.event.repository.html_url }}/blob/master/CHANGELOG.md"
+                  MESSAGE="Operculum: NEW Release: v${{ steps.version.outputs.version }} is published! Check it out at ${{ github.event.repository.html_url }}/blob/master/CHANGELOG.md"
                   curl -H "Content-Type: application/json" -X POST -d '{"content": "'"$MESSAGE"'"}' $DISCORD_WEBHOOK_URL
 
             # - name: Notify on Slack or Discord # Optionally notify team members on release, customize as per your needs
