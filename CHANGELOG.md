@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/fwx5618177/operculum/compare/v1.3.0...v1.4.0) (2023-09-29)
+
+
+### Features
+
+* add discord notify ([b8fe87b](https://github.com/fwx5618177/operculum/commit/b8fe87b223fb0efc99794e5f2a34c6cccc587194))
+
 # [1.3.0](https://github.com/fwx5618177/operculum/compare/v1.2.3...v1.3.0) (2023-09-27)
 
 
