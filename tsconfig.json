@@ -1,14 +1,15 @@
 {
     "compilerOptions": {
         "target": "es2016",
-        "module": "es6",
+        "module": "commonjs",
         "esModuleInterop": true,
         "allowSyntheticDefaultImports": true,
         "forceConsistentCasingInFileNames": true,
         "strict": true,
         "skipLibCheck": true,
         "outDir": "dist",
-        "moduleResolution": "node"
+        "resolveJsonModule": true,
+        "declaration": true
     },
     "include": ["cli.ts", "packages/**/*", "src/**/*"],
     "exclude": ["node_modules/**/*"]

@@ -1,7 +1,7 @@
 import inquirer from 'inquirer'
 import { Context, PluginInterface } from '../../types/pluginInterface'
 import { QuestionMap, questions } from './inquireOptions'
-import { Main } from '@update/markdown'
+import Main from '@update/markdown'
 
 export class InquirePlugin implements PluginInterface {
     async execute(context: Context): Promise<void> {
@@ -23,7 +23,7 @@ export class InquirePlugin implements PluginInterface {
         `
         const updater = new Main(test, 'simple')
 
-        const result = updater.update({ name: 'test', skills: 'test' })
+        const result = updater.execute({ name: 'test', skills: 'test' })
 
         console.log('result:', result)
     }
