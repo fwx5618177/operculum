@@ -1,3 +1,11 @@
+# [1.7.0](https://github.com/fwx5618177/operculum/compare/v1.6.0...v1.7.0) (2023-09-30)
+
+
+### Features
+
+* stable use inquirer ([a393a02](https://github.com/fwx5618177/operculum/commit/a393a0298f9114595c5eda6317320dfe2ab3c943))
+* stable use inquirer ([ffe6512](https://github.com/fwx5618177/operculum/commit/ffe6512386bfd5d9e1b0b5b3d2dca6b130c8ccc2))
+
 # [1.6.0](https://github.com/fwx5618177/operculum/compare/v1.5.0...v1.6.0) (2023-09-30)
 
 
