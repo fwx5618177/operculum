@@ -1,5 +1,5 @@
-const { expect } = require('chai')
-const Main = require('../dist/main.js')
+import { expect } from 'chai'
+import Main from '../dist/main.js'
 
 describe('UpdateMarkdown Main', function () {
     const updater = new Main('the expected updated content', 'simple')

@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Update the template markdown file content",
   "main": "dist/main.js",
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "https://github.com/fwx5618177/operculum",
