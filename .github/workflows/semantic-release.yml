@@ -59,10 +59,10 @@ jobs:
                   subject: New Release Published for ${{ github.repository }}
                   body: |
                       <h1>New Release Published</h1>
-                      <p>A new release has been published on <a href="${{ github.event.repository.html_url }}/releases/tag/v${{ env.RELEASE_VERSION }}">GitHub</a>.</p>
+                      <p>A new release has been published on <a href="${{ github.event.repository.html_url }}/releases/tag/v${{ steps.version.outputs.version }}">GitHub</a>.</p>
                       <p>Here are the details:</p>
                       <ul>
-                        <li><b>Tag:</b> v${{ env.RELEASE_VERSION }}</li>
+                        <li><b>Tag:</b> v${{ steps.version.outputs.version }}</li>
                         <li><b>Name:</b> Operculum</li>
                       </ul>
                       <p>You can view the full changelog <a href="${{ github.event.repository.html_url }}/blob/master/CHANGELOG.md">here</a>.</p>
@@ -75,7 +75,7 @@ jobs:
               if: success()
               run: |
                   DISCORD_WEBHOOK_URL=${{ secrets.DISCORD_WEBHOOK_URL }}
-                  MESSAGE="Operculum: NEW Release: v${{ steps.version.outputs.version }} is published! Check it out at ${{ github.event.repository.html_url }}/blob/master/CHANGELOG.md"
+                  MESSAGE="Operculum: NEW Release: ${{ steps.version.outputs.version }} is published! Check it out at ${{ github.event.repository.html_url }}/blob/master/CHANGELOG.md"
                   curl -H "Content-Type: application/json" -X POST -d '{"content": "'"$MESSAGE"'"}' $DISCORD_WEBHOOK_URL
 
             # - name: Notify on Slack or Discord # Optionally notify team members on release, customize as per your needs
