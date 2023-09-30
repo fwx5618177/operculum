@@ -1,0 +1,23 @@
+{
+  "name": "@update/markdown",
+  "version": "1.0.0",
+  "type": "commonjs",
+  "description": "Update the template markdown file content",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fwx5618177/operculum",
+    "directory": "packages/update-markdown"
+  },
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "update-markdown"
+  ],
+  "engines": {
+    "node": ">= 20.6.1"
+  },
+  "author": "fwx5618177",
+  "license": "ISC"
+}

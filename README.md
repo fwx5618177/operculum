@@ -2,7 +2,9 @@
 
 A CLI for parsing and handling resume templates.
 
-## dev
+## Dev Doc
+
+Here are multiple types of commit message by following:
 
 ```bash
 feat：    新功能（feature）
