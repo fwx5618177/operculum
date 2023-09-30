@@ -1,0 +1,3 @@
+# @operculum/template
+
+> Template
