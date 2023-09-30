@@ -39,10 +39,17 @@ jobs:
               run: pnpm run build
 
             - name: Release and Publish
+              id: semantic-release
               env:
                   GITHUB_TOKEN: ${{ secrets.TOKEN }}
                   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-              run: pnpm run release
+              run: |
+                  pnpm run release || true
+                  if [ "$?" -eq "0" ]; then
+                    echo "::set-output name=publish::true"
+                  else
+                    echo "::set-output name=publish::false"
+                  fi
 
             - name: Get version from package.json
               id: version
@@ -71,11 +78,12 @@ jobs:
                   content_type: text/html
                   attachments: |
                       ./CHANGELOG.md
+
             - name: Notify on Discord
               if: success()
               run: |
                   DISCORD_WEBHOOK_URL=${{ secrets.DISCORD_WEBHOOK_URL }}
-                  MESSAGE="Operculum: NEW Release: ${{ steps.version.outputs.version }} is published! Check it out at ${{ github.event.repository.html_url }}/blob/master/CHANGELOG.md"
+                  MESSAGE="Operculum: NEW Release: ${{ steps.version.outputs.version }} is published! Check it out at ${{ github.event.repository.html_url }}/blob/master/CHANGELOG.md\n NPM: https://www.npmjs.com/package/operculum"
                   curl -H "Content-Type: application/json" -X POST -d '{"content": "'"$MESSAGE"'"}' $DISCORD_WEBHOOK_URL
 
             # - name: Notify on Slack or Discord # Optionally notify team members on release, customize as per your needs
