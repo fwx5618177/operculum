@@ -1,16 +1,17 @@
 {
   "name": "@update/markdown",
   "version": "1.0.0",
-  "type": "commonjs",
   "description": "Update the template markdown file content",
+  "main": "dist/main.js",
+  "type": "commonjs",
   "repository": {
     "type": "git",
     "url": "https://github.com/fwx5618177/operculum",
     "directory": "packages/update-markdown"
   },
-  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc -p tsconfig.json",
+    "test": "mocha ./tests/**/*.spec.js"
   },
   "keywords": [
     "update-markdown"

@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@update/markdown':
+        specifier: workspace:^
+        version: link:packages/update-markdown
       commander:
         specifier: ^11.0.0
         version: 11.0.0
@@ -93,6 +96,12 @@ importers:
       tsconfig-paths:
         specifier: ^4.0.0
         version: 4.2.0
+
+  packages/convert-markdown: {}
+
+  packages/operculum-template: {}
+
+  packages/update-markdown: {}
 
 packages:
 
