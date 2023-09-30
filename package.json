@@ -19,9 +19,10 @@
     "lint:fix": "eslint --ignore-path .gitignore --ext .ts --fix .",
     "prettier": "prettier --ignore-path .gitignore --write \"**/*.ts\"",
     "start": "ts-node -r tsconfig-paths/register --transpile-only cli.ts",
-    "build": "tsc --resolveJsonModule -p tsconfig.json && pnpm recursive run build",
+    "build": "pnpm recursive run build && tsc --resolveJsonModule -p tsconfig.json",
     "cli": "pnpm run clean:cache && pnpm run build && node ./dist/cli.js",
-    "release": "semantic-release"
+    "release": "semantic-release",
+    "test": "pnpm -r test"
   },
   "keywords": [],
   "engines": {
