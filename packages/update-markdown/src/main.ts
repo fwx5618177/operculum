@@ -1,5 +1,5 @@
-import StrategyFactory from './lib/StrategyFactory'
 import { UpdateStrategy } from './lib/interface'
+import StrategyFactory from './lib/StrategyFactory'
 
 class Main {
     private strategy: UpdateStrategy
