@@ -2,6 +2,7 @@ import inquirer from 'inquirer'
 import { Context, PluginInterface } from '../../types/pluginInterface'
 import { QuestionMap, questions } from './inquireOptions'
 import Main from '@update/markdown'
+import Template from '@operculum/template'
 
 export class InquirePlugin implements PluginInterface {
     async execute(context: Context): Promise<void> {
@@ -11,20 +12,34 @@ export class InquirePlugin implements PluginInterface {
 
         const { templatePath, useTemplate, userName, outputFormat, renameFile, fileName } = answers
 
-        const test = `# My Resume
+        if (useTemplate) {
+            const templateList = new Template(templatePath)
+            const fileList = templateList.getFileList()
 
-        ## Name
-        
-        {{name}}
-        
-        ## Skills
-        
-        {{skills}}
-        `
-        const updater = new Main(test, 'simple')
+            const answerFileList = await inquirer.prompt([
+                {
+                    type: 'list',
+                    name: 'file',
+                    message: 'Please select a template file:',
+                    choices: fileList,
+                    when: () => useTemplate,
+                    validate: (input: string) => {
+                        if (input.trim() === '') return 'The file name cannot be empty!'
+                        return true
+                    },
+                },
+            ])
 
-        const result = updater.execute({ name: 'test', skills: 'test' })
+            const { file } = answerFileList
 
-        console.log('result:', result)
+            const content = templateList.getContent(file)
+
+            const updater = new Main(content, 'simple')
+            const result = updater.execute({ name: userName })
+
+            console.log('result:', result)
+        }
+
+        console.log('rename:', fileName)
     }
 }

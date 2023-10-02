@@ -32,6 +32,7 @@
   "license": "ISC",
   "dependencies": {
     "@update/markdown": "workspace:^",
+    "@operculum/template": "workspace:^",
     "commander": "^11.0.0",
     "dayjs": "^1.11.10",
     "rimraf": "^5.0.5",

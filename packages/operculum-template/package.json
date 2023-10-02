@@ -1,6 +1,7 @@
 {
   "name": "@operculum/template",
   "version": "1.0.0",
+  "main": "dist/main.js",
   "type": "commonjs",
   "description": "",
   "repository": {
@@ -8,8 +9,10 @@
     "url": "https://github.com/fwx5618177/operculum",
     "directory": "packages/operculum-template"
   },
-  "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "build": "rollup -c",
+    "test": "mocha ./tests/**/*.spec.js"
+  },
   "keywords": [
     "template"
   ],

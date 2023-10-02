@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@operculum/template':
+        specifier: workspace:^
+        version: link:packages/operculum-template
       '@update/markdown':
         specifier: workspace:^
         version: link:packages/update-markdown

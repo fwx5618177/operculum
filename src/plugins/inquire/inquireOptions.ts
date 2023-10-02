@@ -22,18 +22,9 @@ export const questions = [
         name: 'templatePath',
         message: 'Please enter the path of the resume template:',
         when: (answers: { useTemplate: boolean }) => answers.useTemplate,
+        default: 'templates',
         validate: (input: string) => {
             if (input.trim() === '') return 'The path cannot be empty!'
-            return true
-        },
-    },
-    {
-        type: 'checkbox',
-        name: 'outputFormat',
-        message: 'Select the format(s) for the generated result:',
-        choices: ['PDF', 'DOCX', 'HTML'],
-        validate: (choices: string[]) => {
-            if (choices.length === 0) return 'You must select at least one format!'
             return true
         },
     },
@@ -51,6 +42,16 @@ export const questions = [
         when: (answers: { renameFile: boolean }) => answers.renameFile,
         validate: (input: string) => {
             if (input.trim() === '') return 'The file name cannot be empty!'
+            return true
+        },
+    },
+    {
+        type: 'checkbox',
+        name: 'outputFormat',
+        message: 'Select the format(s) for the generated result:',
+        choices: ['PDF', 'DOCX', 'HTML'],
+        validate: (choices: string[]) => {
+            if (choices.length === 0) return 'You must select at least one format!'
             return true
         },
     },
