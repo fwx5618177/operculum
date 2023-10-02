@@ -86,6 +86,17 @@ jobs:
                   MESSAGE="Operculum: NEW Release: ${{ steps.version.outputs.version }} is published! Check it out at ${{ github.event.repository.html_url }}/blob/master/CHANGELOG.md\n NPM: https://www.npmjs.com/package/operculum"
                   curl -H "Content-Type: application/json" -X POST -d '{"content": "'"$MESSAGE"'"}' $DISCORD_WEBHOOK_URL
 
+            - name: Notify on Telegram
+              if: success()
+              uses: appleboy/telegram-action@master
+              with:
+                  to: ${{ secrets.TELEGRAM_ID }}
+                  token: ${{ secrets.TELEGRAM_OPERCULUMN_TOKEN }}
+                  message: |
+                      🚀 Workflow ${{ github.workflow }} in ${{ github.repository }}:
+                        New Release version: ${{ steps.version.outputs.version }}
+                        Check it out at ${{ github.event.repository.html_url }}/blob/master/CHANGELOG.md
+
             # - name: Notify on Slack or Discord # Optionally notify team members on release, customize as per your needs
             #   if: success() # Only notify if the previous steps were successful
             #   uses: 8398a7/action-slack@v3
