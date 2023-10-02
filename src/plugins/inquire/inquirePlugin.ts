@@ -5,8 +5,14 @@ import Main from '@update/markdown'
 import Template from '@operculum/template'
 
 export class InquirePlugin implements PluginInterface {
+    async prompt<T>(options: any): Promise<T> {
+        const answers = await inquirer.prompt(options)
+
+        return answers as T
+    }
+
     async execute(context: Context): Promise<void> {
-        const answers = (await inquirer.prompt(questions)) as QuestionMap
+        const answers = await this.prompt<QuestionMap>(questions)
         // 将 answers 合并到 context 中
         context = { ...context, answers }
 
@@ -16,7 +22,7 @@ export class InquirePlugin implements PluginInterface {
             const templateList = new Template(templatePath)
             const fileList = templateList.getFileList()
 
-            const answerFileList = await inquirer.prompt([
+            const answerFileList: Record<'file', any> = await this.prompt([
                 {
                     type: 'list',
                     name: 'file',
@@ -40,6 +46,10 @@ export class InquirePlugin implements PluginInterface {
             console.log('result:', result)
         }
 
-        console.log('rename:', fileName)
+        if (renameFile) {
+            console.log('rename:', fileName)
+        }
+
+        return
     }
 }
